@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Receptionists for Clinics</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .demo-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .calendar-section {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .custom-calendar {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .calendar-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .calendar-controls {
+            background: #f8f9fa;
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e9ecef;
+        }
+        
+        .calendar-day-header {
+            background: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .calendar-day {
+            background: white;
+            min-height: 100px;
+            padding: 8px;
+            position: relative;
+        }
+        
+        .calendar-day.today {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+        }
+        
+        .calendar-day.other-month {
+            background: #f5f5f5;
+            color: #999;
+        }
+        
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .event-item {
+            background: #34495e;
+            color: white;
+            padding: 2px 6px;
+            margin: 1px 0;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .event-item:hover {
+            background: #2c3e50;
+        }
+        
+        .event-modal .modal-body {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .event-detail {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .filter-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .demo-option {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .demo-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .phone-input {
+            border-radius: 25px;
+            padding: 15px 25px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .btn-custom {
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background: rgba(255,255,255,0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .stats-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Fix for fixed header */
+        section {
+            scroll-margin-top: 80px;
+        }
+        
+        /* Ensure proper spacing for fixed navbar */
+        .navbar {
+            z-index: 1030;
+        }
+        
+        .text-purple {
+            color: #6f42c1 !important;
+        }
+        
+        /* Enhanced Demo Options Styling */
+        .demo-option {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #007bff;
+        }
+        
+        .demo-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #007bff, #28a745, #ffc107);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .demo-option:hover::before {
+            opacity: 1;
+        }
+        
+        .demo-form {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .demo-form input {
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            transition: border-color 0.3s ease;
+        }
+        
+        .demo-form input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+        
+
+        
+        /* ElevenLabs Convai Widget Styling */
+        elevenlabs-convai {
+            position: fixed !important;
+            top: 30px !important;
+            right: 0px !important;
+            z-index: 1029 !important;
+            width: 350px !important;
+            height: 500px !important;
+        }
+        
+        /* Hide "Powered by ElevenLabs" text */
+        elevenlabs-convai::after {
+            display: none !important;
+        }
+        
+        /* Alternative way to hide the powered by text */
+        [data-elevenlabs-powered-by] {
+            display: none !important;
+        }
+        
+        /* Fix for fixed header */
+        section {
+            scroll-margin-top: 80px;
+        }
+        
+        /* Ensure proper spacing for fixed navbar */
+        .navbar {
+            z-index: 1030;
+        }
+    </style>
+</head>
+<body>
+    <!-- ElevenLabs Convai Widget -->
+    <elevenlabs-convai agent-id="agent_7101k2mpbzxgewq8y8yj0mr07y4k"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-robot me-2"></i>AI Employee Online
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Try Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#calendar">Calendar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Screen 1: Landing Page -->
+    <section id="home" class="hero-section" style="padding-top: 80px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="hero-title">Automated Receptionists for Clinics</h1>
+                    <p class="hero-subtitle">Revenue generator that not only responds but proactively calls clients for promotions, re-bookings, and new procedures</p>
+                    <div class="d-flex gap-3 mb-5 justify-content-center">
+                        <a href="#demo" class="btn btn-light btn-custom">
+                            <i class="fas fa-play me-2"></i>Try Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature Cards -->
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row g-4">
+                        <!-- Row 1 -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-phone fa-3x text-primary mb-3"></i>
+                                <h5 class="text-dark">24/7 Phone Support</h5>
+                                <p class="text-muted">Never miss a call with intelligent call handling</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-comments fa-3x text-success mb-3"></i>
+                                <h5 class="text-dark">Chat Integration</h5>
+                                <p class="text-muted">Seamless chat support across all platforms</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
+                                <h5 class="text-dark">Email Management</h5>
+                                <p class="text-muted">Automated email responses and routing</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
+                                <h5 class="text-dark">Appointment Booking</h5>
+                                <p class="text-muted">Smart scheduling and calendar management</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-dollar-sign fa-3x text-success mb-3"></i>
+                                <h5 class="text-dark">Revenue Generation</h5>
+                                <p class="text-muted">Proactive calling for promotions and re-bookings</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-credit-card fa-3x text-danger mb-3"></i>
+                                <h5 class="text-dark">Payment Management</h5>
+                                <p class="text-muted">Automated billing and payment processing</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-chart-line fa-3x text-purple mb-3"></i>
+                                <h5 class="text-dark">Analytics & Reporting</h5>
+                                <p class="text-muted">Growth insights and performance analytics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-robot fa-3x text-secondary mb-3"></i>
+                                <h5 class="text-dark">AI Recommendations</h5>
+                                <p class="text-muted">Smart suggestions for patient care optimization</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="feature-card">
+                                <i class="fas fa-shield-alt fa-3x text-info mb-3"></i>
+                                <h5 class="text-dark">HIPAA Compliant</h5>
+                                <p class="text-muted">Secure and compliant healthcare communication</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screen 2: Try Demo -->
+    <section id="demo" class="demo-section" style="padding-top: 80px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Try Our Demo</h2>
+                    <p class="lead mb-5">Experience how AI can transform your clinic's communication</p>
+                    
+                    <!-- Phone Number Input -->
+                    <div class="card shadow-lg border-0 mb-5">
+                        <div class="card-body p-5">
+                            <h4 class="mb-4">
+                                <i class="fas fa-phone me-2 text-primary"></i>
+                                Input Your Phone Number
+                            </h4>
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <div class="input-group mb-3">
+                                        <input type="tel" class="form-control phone-input" placeholder="Enter your phone number" id="phoneInput">
+                                        <button class="btn btn-primary btn-custom" type="button" onclick="requestCall()">
+                                            <i class="fas fa-phone me-2"></i>Request Call
+                                        </button>
+                                    </div>
+                                    <p class="text-muted small">Or call directly: <strong>+888999777</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Demo Options -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="demo-option">
+                                <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+                                <h5>WhatsApp Communication</h5>
+                                <p class="text-muted">Phone number collection</p>
+                                
+                                <div class="demo-form">
+                                    <div class="mb-3">
+                                        <input type="tel" class="form-control" id="whatsappPhone" placeholder="Your phone" required>
+                                    </div>
+                                    <button class="btn btn-success btn-custom w-100" onclick="startWhatsApp()">
+                                        <i class="fab fa-whatsapp me-2"></i>Book Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="demo-option">
+                                <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
+                                <h5>Email Communication</h5>
+                                <p class="text-muted">Email collection</p>
+                                
+                                <div class="demo-form">
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="emailAddress" placeholder="Your email" required>
+                                    </div>
+                                    <button class="btn btn-warning btn-custom w-100" onclick="emailDemo()">
+                                        <i class="fas fa-envelope me-2"></i>Book Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screen 3: Custom Calendar -->
+    <section id="calendar" class="calendar-section" style="padding-top: 80px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center">Live Appointment Calendar</h2>
+                    <p class="lead text-center mb-5">See real appointments being booked through our AI system</p>
+                    
+                    <!-- Filter Section -->
+                    <div class="filter-section">
+                        <div class="row align-items-end">
+                            <div class="col-md-6">
+                                <label for="emailDropdown" class="form-label">Filter by Attendee:</label>
+                                <select class="form-select" id="emailDropdown" onchange="filterByDropdown()">
+                                    <option value="">All attendees</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="serviceDropdown" class="form-label">Find by Service:</label>
+                                <select class="form-select" id="serviceDropdown" onchange="filterByService()">
+                                    <option value="">All services</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Calendar -->
+                    <div class="custom-calendar">
+                        <div class="calendar-header">
+                            <h3 id="calendarTitle">Calendar</h3>
+                        </div>
+                        <div class="calendar-controls">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <button class="btn btn-outline-primary" onclick="previousMonth()">
+                                        <i class="fas fa-chevron-left"></i> Previous
+                                    </button>
+                                    <button class="btn btn-outline-primary ms-2" onclick="nextMonth()">
+                                        Next <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <span class="badge bg-primary" id="eventCount">0 events</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="calendarContainer">
+                            <div class="loading">
+                                <i class="fas fa-spinner fa-spin fa-2x mb-3"></i>
+                                <p>Loading calendar...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalTitle">Event Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="eventModalBody">
+                    <!-- Event details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 AI Employee Online. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    
+    <!-- Custom JS -->
+    <script>
+        // Google Calendar API Configuration
+        const CALENDAR_ID = '1ecaeb5a39991f995e9e120eb0a21bc127efffbc0a7416e6d365031ccd6d3061@group.calendar.google.com';
+        const API_KEY = 'AIzaSyBNMZC6s8UoLg9lQQMUokgMKiMGl5zRLQ0';
+        
+        let currentDate = new Date();
+        let events = [];
+        let filteredEvents = [];
+        
+        // Initialize calendar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial calendar
+            renderCalendar();
+            
+            // Try to load events from a wider range to find some events
+            loadEventsWideRange();
+        });
+        
+        // Load events from Google Calendar API
+        async function loadEvents() {
+            const emailFilter = document.getElementById('emailDropdown').value;
+            
+            // Use current date
+            const startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const endDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            
+            const startISO = startDate.toISOString();
+            const endISO = endDate.toISOString();
+            
+            const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${startISO}&timeMax=${endISO}&singleEvents=true&orderBy=startTime&showDeleted=false&maxResults=100`;
+            
+            console.log('=== LOADING EVENTS FROM API ===');
+            console.log('URL:', url);
+            console.log('Date range:', startISO, 'to', endISO);
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                console.log('API Response status:', response.status);
+                console.log('API Response data:', data);
+                
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+                
+                events = data.items || [];
+                console.log('Found events from API:', events.length);
+                
+                // TEST OUTPUT: Show detailed data for each event
+                console.log('=== DETAILED EVENT DATA FROM API ===');
+                events.forEach((event, index) => {
+                    console.log(`API Event ${index + 1}:`, {
+                        id: event.id,
+                        summary: event.summary,
+                        start: event.start,
+                        end: event.end,
+                        attendees: event.attendees,
+                        organizer: event.organizer,
+                        description: event.description,
+                        location: event.location,
+                        status: event.status,
+                        htmlLink: event.htmlLink
+                    });
+                });
+                console.log('=== END API EVENT DATA ===');
+                
+                // If no events found in current month, try wider range
+                if (events.length === 0) {
+                    console.log('No events in current month, trying wider range...');
+                    await loadEventsWideRange();
+                    return;
+                }
+                
+                // Update email dropdown with unique attendee emails
+                updateEmailDropdown();
+                updateServiceDropdown();
+                
+                // Filter events by email if provided
+                if (emailFilter) {
+                    filteredEvents = events.filter(event => {
+                        const emailsFromTitle = parseEmailsFromTitle(event.summary);
+                        return emailsFromTitle.some(email => 
+                            email.toLowerCase().includes(emailFilter.toLowerCase())
+                        );
+                    });
+                } else {
+                    filteredEvents = events;
+                }
+                
+                renderCalendar();
+                updateEventCount();
+                
+            } catch (error) {
+                console.error('Error loading events:', error);
+                document.getElementById('calendarContainer').innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Error loading events: ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // Parse emails from event title
+        function parseEmailsFromTitle(title) {
+            if (!title) return [];
+            
+            // Email regex pattern
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+            const emails = title.match(emailRegex) || [];
+            
+            console.log(`Parsed emails from title "${title}":`, emails);
+            return emails;
+        }
+        
+        // Parse services from event title
+        function parseServicesFromTitle(title) {
+            if (!title) return [];
+            
+            // Remove emails from title first
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+            let cleanTitle = title.replace(emailRegex, '').trim();
+            
+            // Remove extra spaces and dashes
+            cleanTitle = cleanTitle.replace(/\s*-\s*$/, '').trim();
+            cleanTitle = cleanTitle.replace(/^\s*-\s*/, '').trim();
+            
+            // Split by common separators and extract services
+            const services = cleanTitle.split(/[,\-\–\—]/).map(service => service.trim()).filter(service => service.length > 0);
+            
+            console.log(`Parsed services from title "${title}":`, services);
+            return services;
+        }
+        
+        // Update email dropdown with emails parsed from event titles
+        function updateEmailDropdown() {
+            const emailDropdown = document.getElementById('emailDropdown');
+            const uniqueEmails = new Set();
+            
+            console.log('Updating dropdown with events:', events);
+            
+            // Parse emails from event titles
+            events.forEach(event => {
+                console.log('Processing event:', event.summary);
+                const emailsFromTitle = parseEmailsFromTitle(event.summary);
+                emailsFromTitle.forEach(email => {
+                    if (email && email.length > 0) {
+                        uniqueEmails.add(email);
+                    }
+                });
+            });
+            
+            console.log('Unique emails found from titles:', Array.from(uniqueEmails));
+            
+            // Clear existing options except the first one
+            emailDropdown.innerHTML = '<option value="">All attendees</option>';
+            
+            // Add unique emails to dropdown
+            Array.from(uniqueEmails).sort().forEach(email => {
+                const option = document.createElement('option');
+                option.value = email;
+                option.textContent = email;
+                emailDropdown.appendChild(option);
+            });
+            
+            console.log('Dropdown updated with options:', emailDropdown.options.length);
+        }
+        
+        // Update service dropdown with services parsed from event titles
+        function updateServiceDropdown() {
+            const serviceDropdown = document.getElementById('serviceDropdown');
+            const uniqueServices = new Set();
+            
+            console.log('Updating service dropdown with events:', events);
+            
+            // Parse services from event titles
+            events.forEach(event => {
+                console.log('Processing event for services:', event.summary);
+                const servicesFromTitle = parseServicesFromTitle(event.summary);
+                servicesFromTitle.forEach(service => {
+                    if (service && service.length > 0) {
+                        uniqueServices.add(service);
+                    }
+                });
+            });
+            
+            console.log('Unique services found from titles:', Array.from(uniqueServices));
+            
+            // Clear existing options except the first one
+            serviceDropdown.innerHTML = '<option value="">All services</option>';
+            
+            // Add unique services to dropdown
+            Array.from(uniqueServices).sort().forEach(service => {
+                const option = document.createElement('option');
+                option.value = service;
+                option.textContent = service;
+                serviceDropdown.appendChild(option);
+            });
+            
+            console.log('Service dropdown updated with options:', serviceDropdown.options.length);
+        }
+        
+        // Filter events by dropdown selection
+        function filterByDropdown() {
+            const selectedEmail = document.getElementById('emailDropdown').value;
+            const selectedService = document.getElementById('serviceDropdown').value;
+            
+            // Start with all events
+            let filtered = events;
+            
+            // Filter by email if selected
+            if (selectedEmail) {
+                filtered = filtered.filter(event => {
+                    const emailsFromTitle = parseEmailsFromTitle(event.summary);
+                    return emailsFromTitle.includes(selectedEmail);
+                });
+            }
+            
+            // Filter by service if selected
+            if (selectedService) {
+                filtered = filtered.filter(event => {
+                    const servicesFromTitle = parseServicesFromTitle(event.summary);
+                    return servicesFromTitle.includes(selectedService);
+                });
+            }
+            
+            filteredEvents = filtered;
+            renderCalendar();
+            updateEventCount();
+        }
+        
+        // Filter events by service dropdown selection
+        function filterByService() {
+            filterByDropdown(); // Reuse the combined filtering logic
+        }
+        
+        // Load events from a wider date range to find test events
+        async function loadEventsWideRange() {
+            const startDate = new Date();
+            startDate.setMonth(startDate.getMonth() - 3); // 3 months ago
+            const endDate = new Date();
+            endDate.setMonth(endDate.getMonth() + 3); // 3 months from now
+            
+            const startISO = startDate.toISOString();
+            const endISO = endDate.toISOString();
+            
+            const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${startISO}&timeMax=${endISO}&singleEvents=true&orderBy=startTime&showDeleted=false&maxResults=100`;
+            
+            console.log('=== LOADING WIDE RANGE EVENTS ===');
+            console.log('Wide range URL:', url);
+            console.log('Wide range date range:', startISO, 'to', endISO);
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                console.log('Wide range API Response status:', response.status);
+                console.log('Wide range API Response data:', data);
+                
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+                
+                const wideRangeEvents = data.items || [];
+                console.log('Found events in wide range:', wideRangeEvents.length);
+                
+                // TEST OUTPUT: Show detailed data for wide range events
+                console.log('=== WIDE RANGE EVENT DATA ===');
+                wideRangeEvents.forEach((event, index) => {
+                    console.log(`Wide Range Event ${index + 1}:`, {
+                        id: event.id,
+                        summary: event.summary,
+                        start: event.start,
+                        end: event.end,
+                        attendees: event.attendees,
+                        organizer: event.organizer,
+                        description: event.description,
+                        location: event.location,
+                        status: event.status,
+                        htmlLink: event.htmlLink
+                    });
+                });
+                console.log('=== END WIDE RANGE EVENT DATA ===');
+                
+                // If we found events, use them to populate dropdown
+                if (wideRangeEvents.length > 0) {
+                    events = wideRangeEvents;
+                    console.log('Events loaded from wide range:', events);
+                    updateEmailDropdown();
+                    updateServiceDropdown();
+                    filteredEvents = events;
+                    renderCalendar();
+                    updateEventCount();
+                } else {
+                    console.log('No events found in wide range, loading test events...');
+                    // Load test events if no real events found
+                    loadTestEvents();
+                }
+                
+            } catch (error) {
+                console.error('Error loading wide range events:', error);
+                console.log('Loading test events due to error...');
+                // Load test events on error
+                loadTestEvents();
+            }
+        }
+        
+                 // Load test events for demonstration
+         function loadTestEvents() {
+             console.log('=== LOADING TEST EVENTS ===');
+             console.log('Creating test events with sample data...');
+             
+             const today = new Date();
+             const tomorrow = new Date(today);
+             tomorrow.setDate(today.getDate() + 1);
+             
+             events = [
+                 {
+                     id: 'test1',
+                     summary: 'Regular check - patient1@example.com doctor.smith@clinic.com',
+                     start: { dateTime: today.toISOString() },
+                     end: { dateTime: new Date(today.getTime() + 60 * 60 * 1000).toISOString() },
+                     attendees: [
+                         { email: 'miiiiroshaa@gmail.com', responseStatus: 'accepted' },
+                         { email: 'patient1@example.com', responseStatus: 'accepted' },
+                         { email: 'doctor.smith@clinic.com', responseStatus: 'accepted' }
+                     ],
+                     organizer: { email: 'miiiiroshaa@gmail.com' },
+                     status: 'confirmed'
+                 },
+                 {
+                     id: 'test2',
+                     summary: 'Cleaning - patient2@example.com hygienist.jones@clinic.com',
+                     start: { dateTime: tomorrow.toISOString() },
+                     end: { dateTime: new Date(tomorrow.getTime() + 90 * 60 * 1000).toISOString() },
+                     attendees: [
+                         { email: 'miiiiroshaa@gmail.com', responseStatus: 'accepted' },
+                         { email: 'patient2@example.com', responseStatus: 'accepted' },
+                         { email: 'hygienist.jones@clinic.com', responseStatus: 'accepted' }
+                     ],
+                     organizer: { email: 'miiiiroshaa@gmail.com' },
+                     status: 'confirmed'
+                 },
+                 {
+                     id: 'test3',
+                     summary: 'Consultation - patient3@example.com specialist.brown@clinic.com',
+                     start: { dateTime: new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000).toISOString() },
+                     end: { dateTime: new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000 + 45 * 60 * 1000).toISOString() },
+                     attendees: [
+                         { email: 'miiiiroshaa@gmail.com', responseStatus: 'accepted' },
+                         { email: 'patient3@example.com', responseStatus: 'accepted' },
+                         { email: 'specialist.brown@clinic.com', responseStatus: 'accepted' }
+                     ],
+                     organizer: { email: 'miiiiroshaa@gmail.com' },
+                     status: 'confirmed'
+                 }
+             ];
+             
+             console.log('=== TEST EVENTS CREATED ===');
+             console.log('Test events loaded:', events);
+             console.log('Test event summaries:', events.map(e => e.summary));
+             updateEmailDropdown();
+             updateServiceDropdown();
+             filteredEvents = events;
+             renderCalendar();
+             updateEventCount();
+         }
+         
+        // Clean event title by removing email addresses
+        function cleanEventTitle(title) {
+            if (!title) return 'Untitled Event';
+            
+            // Remove email addresses from title
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+            let cleanTitle = title.replace(emailRegex, '').trim();
+            
+            // Remove extra spaces and dashes
+            cleanTitle = cleanTitle.replace(/\s*-\s*$/, '').trim();
+            cleanTitle = cleanTitle.replace(/^\s*-\s*/, '').trim();
+            
+            // If title is empty after cleaning, return original
+            if (!cleanTitle) {
+                return title;
+            }
+            
+            return cleanTitle;
+        }
+        
+        // Render calendar grid
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Update calendar title
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            document.getElementById('calendarTitle').textContent = `${monthNames[month]} ${year}`;
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            let calendarHTML = `
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+            `;
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Generate calendar days
+            for (let i = 0; i < 42; i++) {
+                const currentDay = new Date(startDate);
+                currentDay.setDate(startDate.getDate() + i);
+                
+                const isToday = currentDay.getTime() === today.getTime();
+                const isOtherMonth = currentDay.getMonth() !== month;
+                const dayNumber = currentDay.getDate();
+                
+                let dayClass = 'calendar-day';
+                if (isToday) dayClass += ' today';
+                if (isOtherMonth) dayClass += ' other-month';
+                
+                // Get events for this day
+                const dayEvents = getEventsForDay(currentDay);
+                
+                calendarHTML += `<div class="${dayClass}">`;
+                calendarHTML += `<div class="day-number">${dayNumber}</div>`;
+                
+                // Add event indicators
+                dayEvents.forEach(event => {
+                    const eventTitle = cleanEventTitle(event.summary);
+                    calendarHTML += `<div class="event-item" onclick="showEventDetails('${event.id}')" title="${eventTitle}">${eventTitle}</div>`;
+                });
+                
+                calendarHTML += '</div>';
+            }
+            
+            calendarHTML += '</div>';
+            document.getElementById('calendarContainer').innerHTML = calendarHTML;
+        }
+        
+        // Get events for a specific day
+        function getEventsForDay(date) {
+            return filteredEvents.filter(event => {
+                const eventStart = new Date(event.start.dateTime || event.start.date);
+                const eventDate = new Date(eventStart.getFullYear(), eventStart.getMonth(), eventStart.getDate());
+                const targetDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                return eventDate.getTime() === targetDate.getTime();
+            });
+        }
+        
+        // Update event count
+        function updateEventCount() {
+            document.getElementById('eventCount').textContent = `${filteredEvents.length} events`;
+        }
+        
+        // Navigation functions
+        function previousMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            document.getElementById('monthSelect').value = currentDate.getMonth();
+            loadEvents();
+        }
+        
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            document.getElementById('monthSelect').value = currentDate.getMonth();
+            loadEvents();
+        }
+        
+        // Show event details modal
+        function showEventDetails(eventId) {
+            const event = events.find(e => e.id === eventId);
+            if (!event) return;
+            
+            const modal = new bootstrap.Modal(document.getElementById('eventModal'));
+            document.getElementById('eventModalTitle').textContent = cleanEventTitle(event.summary);
+            
+            let attendeesHTML = '';
+            if (event.attendees) {
+                attendeesHTML = event.attendees.map(attendee => 
+                    `<li><i class="fas fa-user me-2"></i>${attendee.email} ${attendee.responseStatus ? `(${attendee.responseStatus})` : ''}</li>`
+                ).join('');
+            }
+            
+            const startTime = new Date(event.start.dateTime || event.start.date).toLocaleString();
+            const endTime = new Date(event.end.dateTime || event.end.date).toLocaleString();
+            
+            // Parse emails from event title
+            const emailsFromTitle = parseEmailsFromTitle(event.summary);
+            let emailsHTML = '';
+            if (emailsFromTitle.length > 0) {
+                emailsHTML = emailsFromTitle.map(email => 
+                    `<li><i class="fas fa-envelope me-2"></i>${email}</li>`
+                ).join('');
+            }
+            
+            document.getElementById('eventModalBody').innerHTML = `
+                <div class="event-detail">
+                    <h6><i class="fas fa-calendar me-2"></i>Time</h6>
+                    <p>${startTime} - ${endTime}</p>
+                </div>
+                ${event.description ? `
+                <div class="event-detail">
+                    <h6><i class="fas fa-info-circle me-2"></i>Description</h6>
+                    <p>${event.description}</p>
+                </div>
+                ` : ''}
+                ${emailsHTML ? `
+                <div class="event-detail">
+                    <h6><i class="fas fa-envelope me-2"></i>Emails from Title</h6>
+                    <ul class="list-unstyled">${emailsHTML}</ul>
+                </div>
+                ` : ''}
+                ${attendeesHTML ? `
+                <div class="event-detail">
+                    <h6><i class="fas fa-users me-2"></i>Attendees</h6>
+                    <ul class="list-unstyled">${attendeesHTML}</ul>
+                </div>
+                ` : ''}
+                ${event.location ? `
+                <div class="event-detail">
+                    <h6><i class="fas fa-map-marker-alt me-2"></i>Location</h6>
+                    <p>${event.location}</p>
+                </div>
+                ` : ''}
+            `;
+            
+            modal.show();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Demo functions
+        function requestCall() {
+            const phone = document.getElementById('phoneInput').value;
+            if (phone) {
+                alert(`Call request received for ${phone}. Our AI will call you within 2 minutes.`);
+            } else {
+                alert('Please enter a valid phone number.');
+            }
+        }
+
+        function startWhatsApp() {
+            const phone = document.getElementById('whatsappPhone').value;
+            
+            if (!phone) {
+                alert('Please enter your phone number.');
+                return;
+            }
+            
+            // Validate phone number
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+            
+            alert(`WhatsApp Chat initiated for ${phone}. Opening WhatsApp interface...`);
+            
+            // Here you would integrate with your actual WhatsApp system
+            console.log('WhatsApp demo data:', { phone });
+        }
+
+        function emailDemo() {
+            const email = document.getElementById('emailAddress').value;
+            
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            alert(`Email demo booked for ${email}. Our AI will contact you shortly!`);
+            
+            // Here you would integrate with your actual email system
+            console.log('Email demo data:', { email });
+        }
+
+        function contactInvestor() {
+            alert('Thank you for your interest! Please email us at investors@aireceptionists.com');
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255,255,255,0.98)';
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+            }
+        });
+        
+        // Precise script to remove only ElevenLabs branding text
+        window.addEventListener("load", () => {
+            const removeElevenLabsBranding = () => {
+                // Ищем только текстовые узлы с брендингом
+                const walker = document.createTreeWalker(
+                    document.body,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                let node;
+                while ((node = walker.nextNode())) {
+                    const text = node.nodeValue;
+                    if (text.includes('Powered by ElevenLabs')) {
+                        node.nodeValue = text.replace(/Powered by ElevenLabs/g, '');
+                    }
+                    if (text.includes('Conversational AI')) {
+                        node.nodeValue = text.replace(/Conversational AI/g, '');
+                    }
+                }
+                
+                // Удаляем только ссылки на ElevenLabs, но не весь виджет
+                const elevenLabsLinks = document.querySelectorAll('a[href*="elevenlabs.io"]');
+                elevenLabsLinks.forEach(link => {
+                    if (link.textContent.includes('ElevenLabs') || 
+                        link.textContent.includes('Conversational AI')) {
+                        link.remove();
+                    }
+                });
+            };
+
+            // Запускаем удаление с задержкой
+            setTimeout(removeElevenLabsBranding, 1000);
+            setTimeout(removeElevenLabsBranding, 3000);
+            setTimeout(removeElevenLabsBranding, 5000);
+
+            // MutationObserver для новых текстовых узлов
+            const observer = new MutationObserver((mutations) => {
+                let shouldClean = false;
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === Node.TEXT_NODE && 
+                            node.nodeValue && 
+                            (node.nodeValue.includes('ElevenLabs') || 
+                             node.nodeValue.includes('Conversational AI'))) {
+                            shouldClean = true;
+                        }
+                    });
+                });
+                if (shouldClean) {
+                    setTimeout(removeElevenLabsBranding, 100);
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    </script>
+</body>
+</html>
