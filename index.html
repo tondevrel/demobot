@@ -172,7 +172,7 @@
             <!-- Feature Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20 mb-32">
                 <!-- 24/7 Phone Support -->
-                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 feature-card">
                     <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-phone text-2xl text-white"></i>
                     </div>
@@ -181,7 +181,7 @@
                 </div>
 
                 <!-- Chat Integration -->
-                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 feature-card">
                     <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-comments text-2xl text-white"></i>
                     </div>
@@ -190,7 +190,7 @@
                 </div>
 
                 <!-- Email Management -->
-                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 feature-card">
                     <div class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-envelope text-2xl text-white"></i>
                     </div>
@@ -199,7 +199,7 @@
                 </div>
 
                 <!-- Appointment Booking -->
-                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20">
+                <div class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 feature-card">
                     <div class="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                         <i class="fas fa-calendar-check text-2xl text-white"></i>
                     </div>
@@ -213,7 +213,7 @@
     <!-- Demo Section -->
     <section id="demo" class="relative py-20 lg:py-32 bg-gradient-to-b from-slate-200 via-slate-100 to-slate-50 border-0">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-0">
-            <div class="text-center">
+            <div class="text-center mb-8">
                 <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 gradient-text">
                     Try Our Demo
                 </h2>
@@ -223,7 +223,11 @@
             </div>
 
             <div class="glass-effect rounded-3xl p-8 md:p-12 max-w-2xl mx-auto border-0">
-      
+                <div class="text-center mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-rocket text-3xl text-white"></i>
+                    </div>
+                </div>
 
                 <form id="demoForm" onsubmit="submitDemo(event)" class="space-y-6">
                     <div>
@@ -241,7 +245,7 @@
                             id="demoPhone" 
                             placeholder="Your phone number" 
                             required
-                            class="w-full px-6 py-4 border-0 rounded-2xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                            class="w-full px-6 py-4 bg-white/50 border-0 rounded-2xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
                         >
                     </div>
                     <button 
@@ -262,13 +266,130 @@
     </section>
 
     <!-- Footer -->
-    <footer class="relative py-6 bg-slate-800">
+    <footer class="relative py-12 bg-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-slate-400">&copy; 2024 AI Employee Online. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Landing page variants configuration
+        const landingVariants = {
+            default: {
+                title: "Automated Receptionists",
+                subtitle: "for Clinics",
+                description: "Even when the clinic is closed, appointments are made and potential no-shows are resolved",
+                demoTitle: "Try Our Demo",
+                demoDescription: "Experience the future of clinic management with our AI receptionist",
+                features: [
+                    {
+                        icon: "fas fa-phone",
+                        title: "24/7 Phone Support",
+                        description: "Never miss a call with intelligent call handling"
+                    },
+                    {
+                        icon: "fas fa-comments",
+                        title: "Chat Integration",
+                        description: "Seamless chat support across all platforms"
+                    },
+                    {
+                        icon: "fas fa-envelope",
+                        title: "Email Management",
+                        description: "Automated email responses and routing"
+                    },
+                    {
+                        icon: "fas fa-calendar-check",
+                        title: "Appointment Booking",
+                        description: "Smart scheduling and calendar management"
+                    }
+                ]
+            },
+            sales: {
+                title: "AI Sales Agents",
+                subtitle: "for Business Growth",
+                description: "Transform your sales process with intelligent AI agents that never sleep and always convert",
+                demoTitle: "Try Our Demo",
+                demoDescription: "Experience the future of sales automation with our AI agents",
+                features: [
+                    {
+                        icon: "fas fa-chart-line",
+                        title: "Lead Generation",
+                        description: "Automated lead qualification and scoring"
+                    },
+                    {
+                        icon: "fas fa-phone",
+                        title: "Sales Calls",
+                        description: "AI-powered cold calling and follow-ups"
+                    },
+                    {
+                        icon: "fas fa-comments",
+                        title: "Customer Engagement",
+                        description: "Intelligent conversations that convert prospects"
+                    },
+                    {
+                        icon: "fas fa-bullseye",
+                        title: "Deal Closing",
+                        description: "Smart negotiation and deal management"
+                    }
+                ]
+            }
+        };
+
+        // Function to update landing page content
+        function updateLandingContent(variant) {
+            const config = landingVariants[variant] || landingVariants.default;
+            
+            // Update main title
+            const mainTitle = document.querySelector('#home h1 .gradient-text');
+            if (mainTitle) {
+                mainTitle.textContent = config.title;
+            }
+            
+            // Update subtitle
+            const subtitle = document.querySelector('#home h1 span:not(.gradient-text)');
+            if (subtitle) {
+                subtitle.textContent = config.subtitle;
+            }
+            
+            // Update description
+            const description = document.querySelector('#home p');
+            if (description) {
+                description.textContent = config.description;
+            }
+            
+            // Update demo section
+            const demoTitle = document.querySelector('#demo h2');
+            if (demoTitle) {
+                demoTitle.textContent = config.demoTitle;
+            }
+            
+            const demoDescription = document.querySelector('#demo p');
+            if (demoDescription) {
+                demoDescription.textContent = config.demoDescription;
+            }
+            
+            // Update feature cards
+            const featureCards = document.querySelectorAll('#home .feature-card');
+            config.features.forEach((feature, index) => {
+                if (featureCards[index]) {
+                    const icon = featureCards[index].querySelector('i');
+                    const title = featureCards[index].querySelector('h3');
+                    const description = featureCards[index].querySelector('p');
+                    
+                    if (icon) icon.className = feature.icon + ' text-2xl text-white';
+                    if (title) title.textContent = feature.title;
+                    if (description) description.textContent = feature.description;
+                }
+            });
+        }
+
+        // Function to detect URL hash and update content
+        function detectAndUpdateVariant() {
+            const hash = window.location.hash.substring(1); // Remove the #
+            const variant = landingVariants[hash] ? hash : 'default';
+            updateLandingContent(variant);
+        }
+
         // Demo form submission function
         function submitDemo(event) {
             event.preventDefault();
@@ -324,7 +445,16 @@
             }, 5000);
         }
 
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            detectAndUpdateVariant();
+        });
 
+        // Listen for hash changes
+        window.addEventListener('hashchange', function() {
+            detectAndUpdateVariant();
+        });
     </script>
 </body>
 </html>
+
