@@ -250,8 +250,14 @@
                         <input 
                             type="tel" 
                             id="demoPhone" 
-                            placeholder="Your phone number" 
+                            placeholder="+14155552671"
+                            inputmode="tel"
+                            autocomplete="tel"
+                            pattern="\+[1-9]\d{7,14}"
+                            title="Use international format: + followed by 8–15 digits"
+                            maxlength="16"
                             required
+                            oninput="enforcePhoneFormat(this)"
                             class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 focus:bg-white transition-all duration-300"
                         >
                     </div>
@@ -466,7 +472,7 @@
             
             const name = document.getElementById('demoName').value;
             const email = document.getElementById('demoEmail').value;
-            const phone = document.getElementById('demoPhone').value;
+            const phone = document.getElementById('demoPhone').value.trim();
             const role = document.getElementById('demoRole').value;
             const messageDiv = document.getElementById('demoMessage');
             const submitButton = event.target.querySelector('button[type="submit"]');
@@ -474,6 +480,14 @@
             // Validate inputs
             if (!name || !email || !phone || !role) {
                 showMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            // Strict E.164 validation: + followed by 8–15 digits, first digit 1-9
+            const e164 = /^\+[1-9]\d{7,14}$/;
+            if (!e164.test(phone)) {
+                showMessage('Enter phone in international format, e.g., +14155552671', 'error');
+                document.getElementById('demoPhone').focus();
                 return;
             }
             
@@ -620,6 +634,24 @@
 
         function closeBlog() {
             document.getElementById('blogModal').classList.add('hidden');
+        }
+
+        // Phone input enforcement
+        function enforcePhoneFormat(input) {
+            let value = input.value;
+            // Keep only + and digits
+            value = value.replace(/[^+\d]/g, '');
+            // Ensure only one leading +
+            if (value.includes('+')) {
+                value = '+' + value.replace(/\+/g, '');
+            }
+            // Trim to max length (+ plus up to 15 digits)
+            if (value.startsWith('+')) {
+                value = value.slice(0, 16);
+            } else if (value.length > 0) {
+                value = '+' + value.replace(/\+/g, '').slice(0, 15);
+            }
+            input.value = value;
         }
 
         // Vanta background init
