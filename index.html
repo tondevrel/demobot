@@ -496,8 +496,7 @@
             submitButton.innerHTML = '<span class="relative z-10 flex items-center gap-2"><i class="fas fa-spinner fa-spin"></i>Sending...</span>';
             
             // Construct the API URL
-            const apiUrl = `https://script.google.com/macros/s/AKfycbyfVhrYLR_f18x396Hy-5LQDOyASxQPWRS5kGvor-qbdVD4UbjjcT8BEx9no7EiM0cCYg/exec?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&role=${encodeURIComponent(role)}`;
-            
+            const apiUrl = `https://script.google.com/macros/s/AKfycbyJaSGhYRKQwlSbqKDLuKjsU4XAbrSd3D3PkeTPG0dFUiXU_EhEcGld4a8E52lLrzjz0A/exec?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&role=${encodeURIComponent(role)}`;
             // Send the request
             fetch(apiUrl, {
                 method: 'GET',
