@@ -166,6 +166,12 @@
                         </span>
                         <div class="absolute inset-0 bg-gradient-to-r from-teal-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
+                    <a href="https://calendly.com/ai-worker-demo/30min" target="_blank" rel="noopener" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-cyan-100 bg-white/5 ring-1 ring-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/10">
+                        <span class="relative z-10 flex items-center gap-2">
+                            <i class="fas fa-calendar-check"></i>
+                            Order Audit
+                        </span>
+                    </a>
                 </div>
             </div>
 
@@ -212,7 +218,7 @@
 
     <!-- Vanta Background Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 
     <!-- Demo Section -->
     <section id="demo" class="relative py-20 lg:py-32 bg-gradient-to-b from-slate-200 via-slate-100 to-slate-50 border-0">
@@ -497,6 +503,7 @@
             
             // Construct the API URL
             const apiUrl = `https://script.google.com/macros/s/AKfycbyeytR6MM0a7UCtCRTmkpbcfSZRjXNBMHsJU4pwGeKUklYrsF0X5nSx6E2Zhqxq5HmyTQ/exec?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&role=${encodeURIComponent(role)}`;
+            
             // Send the request
             fetch(apiUrl, {
                 method: 'GET',
@@ -547,60 +554,63 @@
             dental: {
                 title: 'Stop Losing Conversations',
                 body: `
-                    <p><strong>The invisible leak.</strong><br>
-                    Missed calls at 6:40pm, chats waiting 3 minutes, emails answered next morning—none of these feel dramatic. Together, they quietly erase up to 30% of buying intent. It’s not a people problem. It’s a coverage and consistency problem.</p>
+                    <h1>Stop Losing Conversations</h1>
+                    <p>Missed calls at 6:40pm, chats waiting three minutes, emails answered the next morning—none of these feel dramatic. Together, they quietly erase up to 30% of buying intent. It’s not a people problem. It’s a coverage and consistency problem.</p>
 
-                    <p><strong>Three failure modes:</strong><br>
-                    1) <em>Timing</em>: the customer is ready now, you reply later. <br>
-                    2) <em>Fragmentation</em>: phone, chat, email don’t share context. <br>
-                    3) <em>Follow‑up</em>: interest fades when no one nudges.</p>
+                    <h2>Where the leakage happens</h2>
+                    <p><strong>Timing:</strong> the customer is ready now, you reply later.</p>
+                    <p><strong>Fragmentation:</strong> phone, chat, and email don’t share context.</p>
+                    <p><strong>Follow‑up:</strong> interest fades when no one nudges.</p>
 
-                    <p><strong>The fix: online employees.</strong><br>
-                    Always‑on coverage that handles first response, collects context, and routes correctly. Conversations sync across channels. Follow‑ups are scheduled and kept. Your team steps in only where human judgment matters.</p>
+                    <h2>What changes it</h2>
+                    <p>Online employees provide always‑on coverage: they handle first response, collect context, and route correctly. Conversations sync across channels. Follow‑ups are scheduled and kept. Your team steps in only where human judgment truly matters.</p>
 
-                    <p><strong>What to measure:</strong><br>
-                    First‑response time (FRT), conversation capture rate, qualified bookings, and revenue per conversation. Expect quick wins within two weeks.</p>
+                    <h2>Metrics that matter</h2>
+                    <p>First‑response time (FRT), conversation capture rate, qualified bookings, and revenue per conversation. Expect quick wins within two weeks once the first journey is live.</p>
 
-                    <p><strong>The outcome:</strong><br>
-                    Fewer leaks. More controlled growth. No burnout.</p>
+                    <h2>The outcome</h2>
+                    <p>Fewer leaks. More controlled growth. No burnout.</p>
                 `
             },
             pen: {
                 title: 'Systems, Not Scripts',
                 body: `
-                    <p><strong>Why scripts fail.</strong><br>
-                    Scripts go stale. Edge cases multiply. Channels change. The more you document, the more exceptions appear. Teams spend hours rewriting SOPs instead of serving customers.</p>
+                    <h1>Systems, Not Scripts</h1>
+                    <p>Scripts go stale. Edge cases multiply. Channels change. The more you document, the more exceptions appear. Leaders end up rewriting SOPs instead of serving customers.</p>
 
-                    <p><strong>Think in systems.</strong><br>
-                    Replace long scripts with a few durable rules: intent detection, next best action, escalation paths, service levels. Keep brand tone and compliance fixed. Let details adapt per channel and context.</p>
+                    <h2>Design principles</h2>
+                    <p><strong>Intent → Action:</strong> detect why the customer is here and offer the next best step.</p>
+                    <p><strong>Escalation paths:</strong> define when a human takes over, with context attached.</p>
+                    <p><strong>Service levels:</strong> keep response time and tone consistent across channels.</p>
 
-                    <p><strong>What stays human.</strong><br>
-                    Pricing exceptions, sensitive complaints, and high‑value negotiations. Everything else—eligibility checks, product matching, scheduling, reminders—runs reliably as a system.</p>
+                    <h2>What remains human</h2>
+                    <p>Pricing exceptions, sensitive complaints, and high‑value negotiations. Everything else—eligibility checks, product matching, scheduling, reminders—runs as a dependable system.</p>
 
-                    <p><strong>Rollout blueprint:</strong><br>
-                    Start with one journey (e.g., inbound inquiry → booking). Map intents, define actions, and test in one channel. Add channels only after the core loop is stable.</p>
+                    <h2>How to roll out</h2>
+                    <p>Start with one journey (e.g., inbound inquiry → booking). Map intents, define actions, and test in a single channel. Only then mirror the loop across phone, chat, and email.</p>
 
-                    <p><strong>The result:</strong><br>
-                    Consistent service without micromanagement. Less variance. Better margins.</p>
+                    <h2>The payoff</h2>
+                    <p>Consistent service without micromanagement. Less variance. Better margins.</p>
                 `
             },
             igaming: {
                 title: '90‑Day Revenue Plan',
                 body: `
-                    <p><strong>Days 1–14: Prove the loop.</strong><br>
-                    Launch one journey end‑to‑end (lead → qualified → booked/sold). Track FRT, capture rate, and conversion. Aim for speed and clarity, not perfection.</p>
+                    <h1>90‑Day Revenue Plan</h1>
+                    <h2>Days 1–14: Prove the loop</h2>
+                    <p>Launch one journey end‑to‑end (lead → qualified → booked/sold). Track FRT, capture rate, and conversion. Aim for speed and clarity, not perfection.</p>
 
-                    <p><strong>Days 15–45: Add follow‑ups and recovery.</strong><br>
-                    Build reminders, no‑show recovery, and abandoned chat callbacks. This is where most ROI appears—conversations that would have quietly died now complete.</p>
+                    <h2>Days 15–45: Add follow‑ups and recovery</h2>
+                    <p>Build reminders, no‑show recovery, and abandoned chat callbacks. This is where most ROI appears—conversations that would have quietly died now complete.</p>
 
-                    <p><strong>Days 46–75: Multi‑channel consistency.</strong><br>
-                    Mirror the working journey across phone, chat, and email. Centralize context. Make escalation rules identical everywhere.</p>
+                    <h2>Days 46–75: Multi‑channel consistency</h2>
+                    <p>Mirror the working journey across phone, chat, and email. Centralize context. Make escalation rules identical everywhere.</p>
 
-                    <p><strong>Days 76–90: Scale what works.</strong><br>
-                    Add one more high‑value journey. Set weekly reviews on the four metrics: FRT, capture, conversion, revenue per conversation.</p>
+                    <h2>Days 76–90: Scale what works</h2>
+                    <p>Add one more high‑value journey. Set weekly reviews on the four metrics: FRT, capture, conversion, revenue per conversation.</p>
 
-                    <p><strong>By day 90:</strong><br>
-                    A predictable system that turns conversations into outcomes—and keeps your team focused on the moments that truly require them.</p>
+                    <h2>By day 90</h2>
+                    <p>A predictable system that turns conversations into outcomes—and keeps your team focused on the moments that truly require them.</p>
                 `
             }
         };
@@ -656,11 +666,11 @@
         // Vanta background init
         let vantaInstance = null;
         function initVanta() {
-            if (!window.VANTA || !window.VANTA.RINGS) return;
+            if (!window.VANTA || !window.VANTA.BIRDS) return;
             if (vantaInstance) return;
             const el = document.getElementById('home');
             if (!el) return;
-            vantaInstance = window.VANTA.RINGS({
+            vantaInstance = window.VANTA.BIRDS({
                 el: el,
                 mouseControls: true,
                 touchControls: true,
@@ -669,11 +679,20 @@
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                backgroundColor: 0x0f172a,
-                color: 0x0ea5e9
+                color1: 0x0,
+                color2: 0x93dded,
+                colorMode: "variance",
+                birdSize: 3.40,
+                wingSpan: 22.00,
+                speedLimit: 3.00,
+                separation: 39.00,
+                alignment: 44.00,
+                cohesion: 42.00,
+                quantity: 3.00
             });
         }
     </script>
 </body>
 </html>
+
 
