@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Employee Online — Hire AI Assistants for Any Role</title>
+    <meta name="description" content="Programs that talk to customers, manage bookings, sell, and support across phone, chat, and email. Always available and reliable.">
+    <link rel="canonical" href="https://ai-employee.online/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Employee Online — Assistants for Any Role">
+    <meta property="og:description" content="Programs that talk to customers, manage bookings, sell, and support across channels.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ai-employee.online/">
+    <meta property="og:image" content="https://ai-employee.online/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Employee Online — Assistants for Any Role">
+    <meta name="twitter:description" content="Programs that talk, book, sell, support, and follow up across channels.">
+    <meta name="twitter:image" content="https://ai-employee.online/og-image.jpg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS with Typography plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -138,25 +153,27 @@
 <body class="bg-slate-50 text-slate-800 font-inter overflow-x-hidden">
     <!-- Animated Background Elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-600/10 to-cyan-500/10 rounded-full blur-3xl floating-element"></div>
-        <div class="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-indigo-600/10 to-blue-500/10 rounded-full blur-3xl floating-element"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-cyan-600/10 to-teal-500/10 rounded-full blur-3xl floating-element"></div>
+        <div class="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-teal-400/10 rounded-full blur-3xl floating-element"></div>
         <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-full blur-3xl floating-element"></div>
     </div>
 
 
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center hero-bg pt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <section id="home" class="relative min-h-screen flex items-center justify-center hero-bg pt-28 md:pt-32 pb-12">
+        <!-- WebGL Background Canvas -->
+        <canvas id="webgl-canvas" class="absolute inset-0 w-full h-full"></canvas>
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
             <!-- Main Heading -->
             <div class="mb-12">
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
                     <span class="gradient-text">AI Employee Online</span>
                     <br>
-                    <span class="text-white">for Any Role</span>
+                    <span id="heroVariant" data-animate-variant class="text-white inline-block align-baseline"></span>
                 </h1>
                 <p class="text-2xl md:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12">
-                    Programs that talk, sell and support across phone, chat and email.
+                    A digital assistant that talks to clients, manages bookings and provides support — always available and always reliable.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="#demo" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl">
@@ -172,6 +189,7 @@
                             Order Audit
                         </span>
                     </a>
+                    
                 </div>
             </div>
 
@@ -216,9 +234,19 @@
         </div>
     </section>
 
-    <!-- Vanta Background Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <!-- ThreeJS Components Background (Hex Grid) will be loaded via module below -->
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AI Employee Online",
+      "url": "https://ai-employee.online/",
+      "logo": "https://ai-employee.online/logo.png",
+      "sameAs": []
+    }
+    </script>
 
     <!-- Demo Section -->
     <section id="demo" class="relative py-20 lg:py-32 bg-gradient-to-b from-slate-200 via-slate-100 to-slate-50 border-0">
@@ -274,10 +302,23 @@
                             class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 focus:bg-white transition-all duration-300"
                         >
                             <option value="" disabled selected>Select an assistant role for the demo</option>
-                            <option>Dental clinic reception</option>
-                            <option>Beauty salon receptionist</option>
-                            <option>Ballpoint pen salesperson</option>
-                            <option>iGaming butler</option>
+                            <option>Dental Clinic Frontdesk</option>
+                            <option>Beauty Salon Frontdesk (soon)</option>
+                            <option>Barbershop Frontdesk (soon)</option>
+                            <option>Restaurant Booking Assistant (soon)</option>
+                            <option>Fitness/Yoga Studio Assistant (soon)</option>
+                            <option>Medical Clinic Receptionist (soon)</option>
+                            <option>iGaming VIP Concierge (soon)</option>
+                            <option>B2B Event Sales Manager (soon)</option>
+                            <option>Real Estate Assistant (soon)</option>
+                            <option>HR Recruiter Assistant (soon)</option>
+                            <option>Delivery Service Caller (soon)</option>
+                            <option>Auto Service Frontdesk (soon)</option>
+                            <option>Hotel Reception Assistant (soon)</option>
+                            <option>Crypto Exchange Support (soon)</option>
+                            <option>DEX Support (soon)</option>
+                            <option>Lending Support (soon)</option>
+                            <option>Neo-bank Support (soon)</option>
                         </select>
                     </div>
                     <button 
@@ -297,52 +338,49 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="relative py-20 lg:py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">From the Blog</h2>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto">Short reads on how online employees handle real work in different roles.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <article class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer" data-blog-id="dental">
-                    <div class="w-14 h-14 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-tooth text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Stop Losing Conversations</h3>
-                    <p class="text-slate-600">Hidden leakage in calls, chats, and emails—and a practical path to capture it.</p>
-                    <div class="mt-6 text-cyan-700 font-semibold">Read more →</div>
-                </article>
-                <article class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer" data-blog-id="pen">
-                    <div class="w-14 h-14 bg-gradient-to-r from-indigo-600 to-blue-500 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-pen text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Systems, Not Scripts</h3>
-                    <p class="text-slate-600">Designing consistent service across channels without micromanaging or rewriting SOPs weekly.</p>
-                    <div class="mt-6 text-cyan-700 font-semibold">Read more →</div>
-                </article>
-                <article class="group glass-effect rounded-3xl p-8 transition-all duration-500 hover:scale-102 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer" data-blog-id="igaming">
-                    <div class="w-14 h-14 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-chess-knight text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">90‑Day Revenue Plan</h3>
-                    <p class="text-slate-600">A simple roadmap to launch, measure, and scale online employees in your business.</p>
-                    <div class="mt-6 text-cyan-700 font-semibold">Read more →</div>
-                </article>
+    
+
+    <!-- FAQ Section -->
+    <section id="faq" class="relative py-16 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text text-center">FAQ</h2>
+            <div class="space-y-4">
+                <details class="bg-white rounded-2xl p-6 border border-slate-200">
+                    <summary class="cursor-pointer text-lg font-semibold">How fast can I launch?</summary>
+                    <p class="mt-3 text-slate-700">Most businesses launch a first journey in 7–14 days. We start with one outcome (e.g., booking) and expand from there.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 border border-slate-200">
+                    <summary class="cursor-pointer text-lg font-semibold">Will this replace my team?</summary>
+                    <p class="mt-3 text-slate-700">No. It handles repetitive work and first response so your team focuses on cases that need human judgment.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 border border-slate-200">
+                    <summary class="cursor-pointer text-lg font-semibold">Does it work with my tools?</summary>
+                    <p class="mt-3 text-slate-700">Yes. We integrate with calendars, CRMs, and ticketing. We can also provide exportable data and webhooks.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 border border-slate-200">
+                    <summary class="cursor-pointer text-lg font-semibold">How do you handle sensitive cases?</summary>
+                    <p class="mt-3 text-slate-700">Clear rules route edge cases to humans with full context attached. You decide the thresholds.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 border border-slate-200">
+                    <summary class="cursor-pointer text-lg font-semibold">What languages are supported?</summary>
+                    <p class="mt-3 text-slate-700">We can support multiple languages for chat, email, and phone. Tell us your markets.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 border border-slate-200">
+                    <summary class="cursor-pointer text-lg font-semibold">How is success measured?</summary>
+                    <p class="mt-3 text-slate-700">We track first‑response time, capture rate, completion rate, and revenue per conversation.</p>
+                </details>
             </div>
         </div>
+    </section>
 
-        <!-- Blog Modal -->
-        <div id="blogModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden z-40">
-            <div class="absolute inset-0 flex items-center justify-center p-4">
-                <div class="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-10 shadow-2xl relative">
-                    <button aria-label="Close" onclick="closeBlog()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-700">
-                        <i class="fas fa-times text-2xl"></i>
-                    </button>
-                    <h3 id="blogModalTitle" class="text-3xl md:text-4xl font-bold mb-4"></h3>
-                    <div id="blogModalBody" class="prose prose-slate max-w-none">
-                    </div>
-                </div>
+    <!-- CTA Section -->
+    <section class="relative py-16 bg-gradient-to-br from-cyan-700 to-teal-700 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Ready to capture every conversation?</h2>
+            <p class="text-xl text-white/90 mb-8">Launch an online employee in days—not months. Start with one journey and scale.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#demo" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white text-cyan-800 font-semibold hover:scale-105 transition">Try Demo</a>
+                <a href="https://calendly.com/ai-worker-demo/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl ring-2 ring-white/70 hover:bg-white/10 transition">Order Audit</a>
             </div>
         </div>
     </section>
@@ -426,12 +464,8 @@
             if (mainTitle) {
                 mainTitle.textContent = config.title;
             }
-            
-            // Update subtitle
-            const subtitle = document.querySelector('#home h1 span:not(.gradient-text)');
-            if (subtitle) {
-                subtitle.textContent = config.subtitle;
-            }
+
+            // Do not update the animated subtitle to avoid interfering with typing
             
             // Update description
             const description = document.querySelector('#home p');
@@ -502,7 +536,7 @@
             submitButton.innerHTML = '<span class="relative z-10 flex items-center gap-2"><i class="fas fa-spinner fa-spin"></i>Sending...</span>';
             
             // Construct the API URL
-            const apiUrl = `https://script.google.com/macros/s/AKfycbyeytR6MM0a7UCtCRTmkpbcfSZRjXNBMHsJU4pwGeKUklYrsF0X5nSx6E2Zhqxq5HmyTQ/exec?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&role=${encodeURIComponent(role)}`;
+            const apiUrl = `https://script.google.com/macros/s/AKfycbyfVhrYLR_f18x396Hy-5LQDOyASxQPWRS5kGvor-qbdVD4UbjjcT8BEx9no7EiM0cCYg/exec?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&role=${encodeURIComponent(role)}`;
             
             // Send the request
             fetch(apiUrl, {
@@ -538,11 +572,18 @@
         }
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        function startAll() {
             detectAndUpdateVariant();
-            initBlog();
-            initVanta();
-        });
+            initHeroTyping();
+            initHexGrid();
+        }
+        document.addEventListener('DOMContentLoaded', startAll);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+                // Re-run typing to ensure width calculations after font load
+                initHeroTyping();
+            });
+        }
 
         // Listen for hash changes
         window.addEventListener('hashchange', function() {
@@ -555,62 +596,27 @@
                 title: 'Stop Losing Conversations',
                 body: `
                     <h1>Stop Losing Conversations</h1>
-                    <p>Missed calls at 6:40pm, chats waiting three minutes, emails answered the next morning—none of these feel dramatic. Together, they quietly erase up to 30% of buying intent. It’s not a people problem. It’s a coverage and consistency problem.</p>
+                    <p>Missed calls, slow chat replies, and next‑day emails quietly erase buying intent. The fix is simple: fast first response, one thread for every channel, and steady follow ups. When customers reach you, they get answers, next steps, and a scheduled result.</p>
 
-                    <h2>Where the leakage happens</h2>
-                    <p><strong>Timing:</strong> the customer is ready now, you reply later.</p>
-                    <p><strong>Fragmentation:</strong> phone, chat, and email don’t share context.</p>
-                    <p><strong>Follow‑up:</strong> interest fades when no one nudges.</p>
-
-                    <h2>What changes it</h2>
-                    <p>Online employees provide always‑on coverage: they handle first response, collect context, and route correctly. Conversations sync across channels. Follow‑ups are scheduled and kept. Your team steps in only where human judgment truly matters.</p>
-
-                    <h2>Metrics that matter</h2>
-                    <p>First‑response time (FRT), conversation capture rate, qualified bookings, and revenue per conversation. Expect quick wins within two weeks once the first journey is live.</p>
-
-                    <h2>The outcome</h2>
-                    <p>Fewer leaks. More controlled growth. No burnout.</p>
+                    <h2>What Changes It</h2>
+                    <p>Online employees cover evenings and peaks. They keep context, book appointments, and send reminders. Your team joins when judgment is needed. The outcome is steady capture of demand without extra hiring.</p>
                 `
             },
             pen: {
                 title: 'Systems, Not Scripts',
                 body: `
                     <h1>Systems, Not Scripts</h1>
-                    <p>Scripts go stale. Edge cases multiply. Channels change. The more you document, the more exceptions appear. Leaders end up rewriting SOPs instead of serving customers.</p>
+                    <p>Scripts age and create rework. A system keeps service steady: clear next steps, simple escalation, and the same tone in every channel. It reduces errors and makes training easier.</p>
 
-                    <h2>Design principles</h2>
-                    <p><strong>Intent → Action:</strong> detect why the customer is here and offer the next best step.</p>
-                    <p><strong>Escalation paths:</strong> define when a human takes over, with context attached.</p>
-                    <p><strong>Service levels:</strong> keep response time and tone consistent across channels.</p>
-
-                    <h2>What remains human</h2>
-                    <p>Pricing exceptions, sensitive complaints, and high‑value negotiations. Everything else—eligibility checks, product matching, scheduling, reminders—runs as a dependable system.</p>
-
-                    <h2>How to roll out</h2>
-                    <p>Start with one journey (e.g., inbound inquiry → booking). Map intents, define actions, and test in a single channel. Only then mirror the loop across phone, chat, and email.</p>
-
-                    <h2>The payoff</h2>
-                    <p>Consistent service without micromanagement. Less variance. Better margins.</p>
+                    <h2>Rollout</h2>
+                    <p>Start with one journey from inquiry to booking. Measure response time and completion rate. Add channels after the flow works well. Keep improving the wording and the handoff rules.</p>
                 `
             },
             igaming: {
                 title: '90‑Day Revenue Plan',
                 body: `
                     <h1>90‑Day Revenue Plan</h1>
-                    <h2>Days 1–14: Prove the loop</h2>
-                    <p>Launch one journey end‑to‑end (lead → qualified → booked/sold). Track FRT, capture rate, and conversion. Aim for speed and clarity, not perfection.</p>
-
-                    <h2>Days 15–45: Add follow‑ups and recovery</h2>
-                    <p>Build reminders, no‑show recovery, and abandoned chat callbacks. This is where most ROI appears—conversations that would have quietly died now complete.</p>
-
-                    <h2>Days 46–75: Multi‑channel consistency</h2>
-                    <p>Mirror the working journey across phone, chat, and email. Centralize context. Make escalation rules identical everywhere.</p>
-
-                    <h2>Days 76–90: Scale what works</h2>
-                    <p>Add one more high‑value journey. Set weekly reviews on the four metrics: FRT, capture, conversion, revenue per conversation.</p>
-
-                    <h2>By day 90</h2>
-                    <p>A predictable system that turns conversations into outcomes—and keeps your team focused on the moments that truly require them.</p>
+                    <p>Build one working flow and grow it. In the first two weeks, launch a full path from lead to booked or sold and measure response speed and completion. In the next month, add reminders and recovery so fewer conversations are lost. In the final month, copy the working flow to other channels and keep rules the same. By day 90 you have a system that grows with your traffic.</p>
                 `
             }
         };
@@ -639,10 +645,59 @@
             document.getElementById('blogModalTitle').textContent = post.title;
             document.getElementById('blogModalBody').innerHTML = post.body;
             document.getElementById('blogModal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
         }
 
         function closeBlog() {
             document.getElementById('blogModal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Hero typing animation for second line
+        function initHeroTyping() {
+            const target = document.getElementById('heroVariant');
+            if (!target) return;
+            const phrases = [
+                'for Any Role',
+                'for Every Business',
+                'for Every Task'
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let typing = true;
+            const maxPhrase = phrases.reduce((a, b) => (a.length > b.length ? a : b), '');
+            target.style.minWidth = `${maxPhrase.length}ch`;
+            // Ensure stable layout before typing starts
+            target.textContent = '\u00A0';
+
+            function tick() {
+                const current = phrases[phraseIndex];
+                if (typing) {
+                    charIndex++;
+                    const slice = current.slice(0, charIndex);
+                    target.textContent = slice || '\u00A0';
+                    if (charIndex === current.length) {
+                        typing = false;
+                        setTimeout(tick, 1500);
+                        return;
+                    }
+                    setTimeout(tick, 60);
+                } else {
+                    charIndex--;
+                    const slice = current.slice(0, charIndex);
+                    target.textContent = slice || '\u00A0';
+                    if (charIndex === 0) {
+                        typing = true;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        setTimeout(tick, 200);
+                        return;
+                    }
+                    setTimeout(tick, 30);
+                }
+            }
+
+            // Start animation after a short delay
+            setTimeout(tick, 600);
         }
 
         // Phone input enforcement
@@ -663,33 +718,23 @@
             input.value = value;
         }
 
-        // Vanta background init
-        let vantaInstance = null;
-        function initVanta() {
-            if (!window.VANTA || !window.VANTA.BIRDS) return;
-            if (vantaInstance) return;
-            const el = document.getElementById('home');
-            if (!el) return;
-            vantaInstance = window.VANTA.BIRDS({
-                el: el,
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color1: 0x0,
-                color2: 0x93dded,
-                colorMode: "variance",
-                birdSize: 3.40,
-                wingSpan: 22.00,
-                speedLimit: 3.00,
-                separation: 39.00,
-                alignment: 44.00,
-                cohesion: 42.00,
-                quantity: 3.00
-            });
+        // Hex grid background init (threejs-components)
+        let hexBg = null;
+        async function initHexGrid() {
+            try {
+                const { default: Grid1Background } = await import('https://cdn.jsdelivr.net/npm/threejs-components@0.0.16/build/backgrounds/grid1.cdn.min.js');
+                const canvas = document.getElementById('webgl-canvas');
+                if (!canvas) return;
+                hexBg = Grid1Background(canvas);
+                // Unified palette: cyan/teal tones to match UI
+                hexBg.grid.setColors([0x0ea5e9, 0x06b6d4, 0x0891b2]);
+                hexBg.grid.light1.color.set(0x0ea5e9);
+                hexBg.grid.light1.intensity = 900;
+                hexBg.grid.light2.color.set(0x06b6d4);
+                hexBg.grid.light2.intensity = 450;
+            } catch (e) {
+                console.warn('Hex grid failed to init', e);
+            }
         }
     </script>
 </body>
