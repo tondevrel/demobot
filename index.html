@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Employee Online, Hire AI Assistants for Any Role</title>
-    <meta name="description" content="A digital assistant that talks to clients, books appointments and provides support 24/7. Always available and reliable.">
+    <meta name="description" content="A digital assistant that talks to clients, books appointments and provides support 24/7 Always available and reliable.">
     <meta name="robots" content="index,follow">
     <link rel="canonical" href="https://aiemployee.online/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
     <!-- Open Graph -->
     <meta property="og:title" content="AI Employee Online, Assistants for Any Role">
-    <meta property="og:description" content="A digital assistant that talks to clients, books appointments and provides support 24/7.">
+    <meta property="og:description" content="A digital assistant that talks to clients, books appointments and provides support 24/7">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aiemployee.online/">
     <meta property="og:site_name" content="AI Employee Online">
@@ -20,7 +20,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Employee Online, Assistants for Any Role">
-    <meta name="twitter:description" content="A digital assistant that talks to clients, books appointments and provides support 24/7.">
+    <meta name="twitter:description" content="A digital assistant that talks to clients, books appointments and provides support 24/7">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +50,13 @@
     <!-- Vanta.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/night.css" id="theme">
+    
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
     
     
     <script>
@@ -280,9 +287,608 @@
             outline-offset: 2px;
         }
         
+        /* Hero variant animation */
+        #heroVariant {
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        #heroVariant.fade-out {
+            opacity: 0;
+        }
+        
+        #heroVariant.fade-in {
+            opacity: 1;
+        }
+        
+        /* Pitch Deck Mode Styles */
+        .pitch-deck-mode {
+            background: #0f172a !important;
+            color: white !important;
+            height: 100vh !important;
+            overflow: hidden !important;
+        }
+        
+        .pitch-deck-content {
+            display: none;
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+        
+        .pitch-deck-mode .pitch-deck-content {
+            display: block !important;
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+        
+        .pitch-deck-mode .regular-content {
+            display: none !important;
+        }
+        
+        .pitch-deck-mode .reveal {
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+        
+        .pitch-deck-mode .reveal .slides {
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+        
+        .pitch-deck-mode .reveal .slides section {
+            height: 100vh !important;
+            width: 100vw !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 2rem !important;
+            box-sizing: border-box !important;
+        }
+        
+        .pitch-deck-mode body {
+            height: 100vh !important;
+            width: 100vw !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Card-style slides */
+        .slide-card {
+            --border-radius: 1.5rem;
+            --primary-color: #06b6d4;
+            --secondary-color: #1e293b;
+            width: 90%;
+            max-width: 1000px;
+            font-family: "Inter", sans-serif;
+            padding: 3rem;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            background: #f8fafc;
+            box-shadow: 0px 20px 40px 0px rgb(0 0 0 / 10%);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 25px 50px 0px rgb(0 0 0 / 15%);
+        }
+        
+        .slide-card > * + * {
+            margin-top: 1.5em;
+        }
+        
+        .slide-card .card__title {
+            padding: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .slide-card .card__subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .slide-card .card__content {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .slide-card .card__metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .slide-card .card__list {
+            text-align: left;
+            max-width: 100%;
+        }
+        
+        .slide-card .card__list li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            line-height: 1.5;
+        }
+        
+        .slide-card .card__arrow {
+            position: absolute;
+            background: var(--primary-color);
+            padding: 1rem;
+            border-top-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+            bottom: 0;
+            right: 0;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide-card svg {
+            transition: 0.3s;
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Hover effects */
+        .slide-card:hover .card__title {
+            color: var(--primary-color);
+        }
+        
+        .slide-card:hover .card__arrow {
+            background: #0f172a;
+        }
+        
+        .slide-card:hover .card__arrow svg {
+            transform: translateX(5px);
+        }
+        
+        /* Special slides */
+        .slide-card.title-slide {
+            text-align: center;
+        }
+        
+        .slide-card.title-slide .card__title {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .slide-card.cta-slide {
+            text-align: center;
+        }
+        
+        .slide-card.cta-slide .card__buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .slide-card.cta-slide .card__buttons button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-card.cta-slide .card__buttons button:hover {
+            background: #0f172a;
+            transform: translateY(-2px);
+        }
+        
+        .slide-card.cta-slide .card__buttons button.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .slide-card.cta-slide .card__buttons button.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .pitch-nav {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+        
+        .pitch-nav button {
+            background: rgba(6, 182, 212, 0.2);
+            border: 2px solid #06b6d4;
+            color: #06b6d4;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .pitch-nav button:hover {
+            background: #06b6d4;
+            color: white;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .metric-card {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1rem;
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .metric-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+        
+        /* Reveal.js Custom Styles */
+        .reveal {
+            font-family: "Inter", sans-serif;
+        }
+        
+        .reveal .slides section {
+            text-align: left;
+        }
+        
+        .reveal .slides section[data-background] {
+            text-align: center;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: #06b6d4;
+            text-transform: none;
+            line-height: 1.2;
+        }
+        
+        .reveal h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reveal h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reveal h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .reveal ul {
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+        
+        .reveal li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .reveal .metric-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .reveal .metric-grid:has(.metric-card:nth-child(2):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .metric-grid:has(.metric-card:nth-child(3):last-child) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .metric-grid:has(.metric-card:nth-child(4):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .metric-grid.two-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .metric-grid.three-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .metric-grid.four-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .metric-card {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .reveal .metric-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal .metric-label {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+        
+        .reveal .team-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .reveal .team-grid:has(.team-card:nth-child(2):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .team-grid:has(.team-card:nth-child(3):last-child) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .team-grid:has(.team-card:nth-child(4):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .team-grid.two-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .team-grid.three-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .team-grid.four-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .team-card {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .reveal .team-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal .team-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .reveal .team-bio {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .reveal .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .reveal .cta-button {
+            background: #06b6d4;
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .reveal .cta-button:hover {
+            background: #0f172a;
+            transform: translateY(-2px);
+        }
+        
+        .reveal .cta-button.secondary {
+            background: transparent;
+            color: #06b6d4;
+            border: 2px solid #06b6d4;
+        }
+        
+        .reveal .cta-button.secondary:hover {
+            background: #06b6d4;
+            color: white;
+        }
+        
+        .reveal .roadmap-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .reveal .roadmap-grid:has(.roadmap-phase:nth-child(2):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .roadmap-grid:has(.roadmap-phase:nth-child(3):last-child) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .roadmap-grid:has(.roadmap-phase:nth-child(4):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .roadmap-grid.two-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .roadmap-grid.three-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .roadmap-grid.four-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .roadmap-phase {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .reveal .phase-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal .phase-timeline {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal .phase-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .reveal .competitor-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .reveal .competitor-grid:has(.competitor-card:nth-child(2):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .competitor-grid:has(.competitor-card:nth-child(3):last-child) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .competitor-grid:has(.competitor-card:nth-child(4):last-child) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .competitor-grid.two-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .competitor-grid.three-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .reveal .competitor-grid.four-cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .reveal .competitor-card {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .reveal .competitor-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal .competitor-funding {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .reveal .competitor-valuation {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reveal .competitor-differentiator {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-inter overflow-x-hidden">
+    <!-- Regular Content -->
+    <div class="regular-content">
     <!-- Animated Background Elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-cyan-600/10 to-teal-500/10 rounded-full blur-3xl floating-element"></div>
@@ -301,10 +907,10 @@
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight px-4 sm:px-0">
                     <span class="text-white drop-shadow-2xl">AI Employee Online</span>
                     <br>
-                    <span class="text-gray-300 drop-shadow-2xl">for Every Business</span>
+                    <span id="heroVariant" class="text-gray-300 drop-shadow-2xl">for Every Business</span>
                 </h1>
                 <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0 drop-shadow-xl">
-                    A digital assistant that talks to clients, books appointments and provides support 24/7.
+                    A digital assistant that talks to clients, books appointments and provides support 24/7
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="#demo" class="group relative inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-2xl">
@@ -312,7 +918,7 @@
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
                             </svg>
-                            Try Demo Free
+                            Try Demo
                         </span>
                         <div class="absolute inset-0 bg-gradient-to-r from-teal-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
@@ -321,7 +927,7 @@
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                             </svg>
-                            Get Free Audit
+                            Get Audit
                         </span>
                     </a>
                     
@@ -383,8 +989,8 @@
     <section id="social_proof" class="relative py-16 bg-slate-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-slate-800 px-4 sm:px-0">How Major Companies Use AI Agents</h2>
-                <p class="text-base sm:text-lg text-slate-600 px-4 sm:px-0">Real examples of AI transformation in enterprise</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 gradient-text px-4 sm:px-0">How Major Companies Use AI Agents</h2>
+                <p class="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto px-4 sm:px-0">Real examples of AI transformation in enterprise</p>
             </div>
             
             <!-- Case Study Cards -->
@@ -404,7 +1010,7 @@
                         <div class="text-2xl font-bold text-green-600 mb-1">4,000</div>
                         <div class="text-sm text-slate-600">Support staff replaced with AI</div>
                     </div>
-                    <p class="text-slate-700 text-sm sm:text-base">"Salesforce replaced 4,000 out of 9,000 customer support staff with AI agents. Over 26 years, they accumulated 100+ million potential clients they couldn't call back due to staff shortages. AI agents solved this problem."</p>
+                    <p class="text-slate-700 text-sm sm:text-base">Salesforce replaced 4,000 out of 9,000 customer support staff with AI agents. Over 26 years, they accumulated 100+ million potential clients they couldn't call back due to staff shortages. AI agents solved this problem.</p>
                 </div>
                 
                 <!-- Microsoft Case -->
@@ -422,7 +1028,7 @@
                         <div class="text-2xl font-bold text-blue-600 mb-1">30%</div>
                         <div class="text-sm text-slate-600">Of code generated by AI</div>
                     </div>
-                    <p class="text-slate-700 text-sm sm:text-base">"Microsoft CEO Satya Nadella stated that AI now writes about 30% of all code generated by the company. This represents a significant shift in software development efficiency."</p>
+                    <p class="text-slate-700 text-sm sm:text-base">Microsoft CEO Satya Nadella stated that AI now writes about 30% of all code generated by the company. This represents a significant shift in software development efficiency.</p>
                 </div>
                 
                 <!-- IBM Case -->
@@ -440,7 +1046,7 @@
                         <div class="text-2xl font-bold text-purple-600 mb-1">8,000</div>
                         <div class="text-sm text-slate-600">HR & support staff replaced</div>
                     </div>
-                    <p class="text-slate-700 text-sm sm:text-base">"IBM laid off nearly 8,000 employees, primarily from HR and technical support, replacing them with AI-based services. Despite initial layoffs, total employee count not only recovered but exceeded pre-layoff levels."</p>
+                    <p class="text-slate-700 text-sm sm:text-base">IBM laid off nearly 8,000 employees, primarily from HR and technical support, replacing them with AI-based services. Despite initial layoffs, total employee count not only recovered but exceeded pre-layoff levels.</p>
                 </div>
                 
                 <!-- Google Case -->
@@ -458,7 +1064,7 @@
                         <div class="text-2xl font-bold text-red-600 mb-1">25%</div>
                         <div class="text-sm text-slate-600">Of code generated by AI</div>
                     </div>
-                    <p class="text-slate-700 text-sm sm:text-base">"Google CEO Sundar Pichai revealed that 25% of Google's software code is now generated by AI. This represents a massive shift in how software development is approached at scale."</p>
+                    <p class="text-slate-700 text-sm sm:text-base">Google CEO Sundar Pichai revealed that 25% of Google's software code is now generated by AI. This represents a massive shift in how software development is approached at scale.</p>
                 </div>
             </div>
             
@@ -573,7 +1179,7 @@
                     Try the AI Employee Demo
                 </h2>
                 <p class="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto px-4 sm:px-0">
-                    See how an AI assistant can work for your use case.
+                    See how an AI assistant can work for your use case
                 </p>
             </div>
 
@@ -671,7 +1277,7 @@
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                             </svg>
-                            Get My Free Demo
+                            Get My Demo
                         </span>
                         <div class="absolute inset-0 bg-gradient-to-r from-teal-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
@@ -692,7 +1298,10 @@
     <!-- FAQ Section -->
     <section id="faq" class="relative py-16 bg-slate-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 gradient-text text-center px-4 sm:px-0">FAQ</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 gradient-text px-4 sm:px-0">FAQ</h2>
+                <p class="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto px-4 sm:px-0">Common questions about AI Employee Online</p>
+            </div>
             <div class="space-y-4">
                 <details class="bg-white rounded-2xl p-6 border border-slate-200">
                     <summary class="cursor-pointer text-lg font-semibold">How fast can I launch?</summary>
@@ -732,13 +1341,13 @@
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
                     </svg>
-                    Try Demo Free
+                    Try Demo
                 </a>
                 <a href="https://calendly.com/ai-worker-demo/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl ring-2 ring-white/70 hover:bg-white/10 transition">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                     </svg>
-                    Get Free Audit
+                    Get Audit
                 </a>
             </div>
         </div>
@@ -786,9 +1395,9 @@
             default: {
                 title: "AI Employee Online",
                 subtitle: "for Any Role",
-                description: "A digital assistant that talks to clients, books appointments and provides support 24/7.",
+                description: "A digital assistant that talks to clients, books appointments and provides support 24/7",
                 demoTitle: "Try the AI Employee Demo",
-                demoDescription: "See how an AI assistant can work for your use case.",
+                demoDescription: "See how an AI assistant can work for your use case",
                 features: [
                     {
                         icon: "fas fa-phone",
@@ -1145,13 +1754,78 @@
             }
         }
 
+        // Check if pitch deck version should be shown
+        function isPitchDeckMode() {
+            return window.location.hash === '#pitchdeck';
+        }
+
+        // Initialize pitch deck mode
+        function initPitchDeckMode() {
+            if (!isPitchDeckMode()) return;
+            
+            // Add pitch deck specific styles
+            document.body.classList.add('pitch-deck-mode');
+            
+            // Hide regular content and show pitch deck content
+            const regularContent = document.querySelector('.regular-content');
+            const pitchDeckContent = document.querySelector('.pitch-deck-content');
+            
+            if (regularContent) regularContent.style.display = 'none';
+            if (pitchDeckContent) pitchDeckContent.style.display = 'block';
+            
+            // Initialize Reveal.js
+            initRevealJS();
+        }
+
+        // Initialize Reveal.js
+        function initRevealJS() {
+                Reveal.initialize({
+                    hash: true,
+                    controls: true,
+                    controlsTutorial: false,
+                    controlsLayout: 'edges',
+                    progress: true,
+                    slideNumber: 'c/t',
+                    loop: false,
+                    autoAnimate: true,
+                    transition: 'slide',
+                    transitionSpeed: 'default',
+                    backgroundTransition: 'fade',
+                    viewDistance: 3,
+                    mobileViewDistance: 2,
+                    margin: 0.04,
+                    minScale: 0.2,
+                    maxScale: 1.5,
+                    center: true,
+                    touch: true,
+                    keyboard: true,
+                    overview: true,
+                    help: true,
+                    showNotes: false,
+                    autoSlide: 0,
+                    autoSlideStoppable: true,
+                    mouseWheel: false,
+                    hideInactiveCursor: true,
+                    hideCursorTime: 5000,
+                    previewLinks: false,
+                    focusBodyOnPageVisibilityChange: true,
+                    plugins: []
+                });
+        }
+
         // Initialize on page load
         function startAll() {
+            if (isPitchDeckMode()) {
+                initPitchDeckMode();
+                return;
+            }
+            
             detectAndUpdateVariant();
             captureUTMParameters();
             trackPageView('landing_page');
             initVantaNet();
             initPhoneInput();
+            initHeroAnimation();
             
             // Track CTA clicks
             document.querySelectorAll('a[href="#demo"]').forEach(link => {
@@ -1216,6 +1890,68 @@
         });
 
 
+
+        // Hero variant animation
+        let animationActive = false;
+        let animationTimer = null;
+        
+        function initHeroAnimation() {
+            const target = document.getElementById('heroVariant');
+            if (!target || animationActive) return;
+            
+            animationActive = true;
+            
+            const phrases = [
+                'for Every Business',
+                'for Any Role', 
+                'for Every Task'
+            ];
+            
+            let currentIndex = 0;
+            
+            function animateText() {
+                if (!animationActive) return;
+                
+                const target = document.getElementById('heroVariant');
+                if (!target) return;
+                
+                // Fade out
+                target.classList.add('fade-out');
+                target.classList.remove('fade-in');
+                
+                setTimeout(() => {
+                    // Change text
+                    target.textContent = phrases[currentIndex];
+                    
+                    // Fade in
+                    target.classList.remove('fade-out');
+                    target.classList.add('fade-in');
+                    
+                    // Move to next phrase
+                    currentIndex = (currentIndex + 1) % phrases.length;
+                    
+                    // Schedule next animation
+                    animationTimer = setTimeout(animateText, 3000);
+                }, 800);
+            }
+            
+            // Start animation after delay
+            setTimeout(animateText, 2000);
+        }
+        
+        function resetHeroAnimation() {
+            animationActive = false;
+            if (animationTimer) {
+                clearTimeout(animationTimer);
+                animationTimer = null;
+            }
+            
+            const target = document.getElementById('heroVariant');
+            if (target) {
+                target.textContent = 'for Every Business';
+                target.classList.remove('fade-out', 'fade-in');
+            }
+        }
 
         // Simple phone input validation
         function initPhoneInput() {
@@ -1424,6 +2160,202 @@
 
         // (Removed animated background for responsiveness)
     </script>
+    </div> <!-- End regular-content -->
+    
+    <!-- Pitch Deck Content -->
+    <div class="pitch-deck-content">
+        <div class="reveal">
+            <div class="slides">
+        
+                <!-- Slide 1: Title -->
+                <section data-background="#0f172a">
+                    <h1>AI Employee Online</h1>
+                    <h2>Infrastructure Software as a Service</h2>
+                    <h3>Powering AI-Driven Business Automation</h3>
+                    <p>Open-source AI automation infrastructure reducing costs and boosting revenue across healthcare, dental, and beauty industries</p>
+                </section>
+        
+                <!-- Slide 2: Problem -->
+                <section>
+                    <h2>The Problem</h2>
+                    <ul>
+                        <li>Millions lost annually in dental, medical, and beauty industries due to missed calls and slow responses</li>
+                        <li>27% of calls go unanswered; 60% customer abandonment due to wait times</li>
+                        <li>Over $100M in lost revenue yearly across key verticals</li>
+                        <li>Rising labor costs and staff shortages limit business growth and service quality</li>
+                    </ul>
+                </section>
+        
+                <!-- Slide 3: Market Shift & Validation -->
+                <section>
+                    <h2>Market Shift & Validation</h2>
+                    <ul>
+                        <li>Salesforce replaced 4,000 support staff with AI agents, clearing a 100M+ backlog</li>
+                        <li>Microsoft and Google generate 25-30% of code using AI, driving massive productivity gains</li>
+                        <li>By 2025, 95% of customer interactions expected to be AI-automated globally</li>
+                        <li>AI customer service market projected to reach $48B by 2030, growing at 25.8% CAGR</li>
+                    </ul>
+                </section>
+        
+                <!-- Slide 4: Our ISaaS Solution -->
+                <section>
+                    <h2>Our ISaaS Solution</h2>
+                    <ul>
+                        <li>AI Employee Online delivers Infrastructure Software as a Service (ISaaS) — foundational AI automation infrastructure reducing costs and boosting revenue</li>
+                        <li>Open-source core + private hosting ensures transparency, data sovereignty, and compliance</li>
+                        <li>Deep vertical AI specialization in healthcare, dental, and beauty enables rapid deployment and high relevance</li>
+                        <li>Fast 7-day deployment integrating voice AI, CRM, scheduling, and analytics with no vendor lock-in</li>
+                    </ul>
+                </section>
+        
+                <!-- Slide 5: Product Roadmap -->
+                <section>
+                    <h2>Product Roadmap</h2>
+                    <div class="roadmap-grid four-cards">
+                        <div class="roadmap-phase">
+                            <h3 class="phase-title">Phase 1</h3>
+                            <p class="phase-timeline">0-3 months</p>
+                            <p class="phase-description">Core voice AI, booking, CRM sync, 3 languages</p>
+                        </div>
+                        <div class="roadmap-phase">
+                            <h3 class="phase-title">Phase 2</h3>
+                            <p class="phase-timeline">4-8 months</p>
+                            <p class="phase-description">Vertical workflows, 10+ languages</p>
+                        </div>
+                        <div class="roadmap-phase">
+                            <h3 class="phase-title">Phase 3</h3>
+                            <p class="phase-timeline">9-12 months</p>
+                            <p class="phase-description">Analytics dashboard, multi-location management</p>
+                        </div>
+                        <div class="roadmap-phase">
+                            <h3 class="phase-title">Phase 4</h3>
+                            <p class="phase-timeline">13-18 months</p>
+                            <p class="phase-description">White-label, enterprise security, global expansion</p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Slide 6: Business Model -->
+                <section>
+                    <h2>Business Model</h2>
+                    <ul>
+                        <li>Tiered subscriptions combined with usage- and outcome-based pricing to ensure scalability and transparency</li>
+                        <li>Optimized CAC leveraging AI-powered outbound sales plus dedicated on-ground sales teams</li>
+                        <li>Strong LTV driven by integrations, upselling, and customer retention</li>
+                        <li>Sales cycle averaging 1-3 months; flexible monthly and annual payment options</li>
+                    </ul>
+                </section>
+        
+                <!-- Slide 7: Go-to-Market Execution Proof -->
+                <section>
+                    <h2>Go-to-Market Execution Proof</h2>
+                    <ul>
+                        <li>AI automates calls and books meetings with business owners, increasing prospecting efficiency</li>
+                        <li>Field sales teams conduct in-person demos to build trust and accelerate closing</li>
+                        <li>Community building through global ISaaS business owner events and networking</li>
+                        <li>Active participation and hosting of industry conferences and VIP events</li>
+                        <li>Additionally, automating sponsorship sales for conference organizers: AI-driven outreach to sponsors, personalized sponsorship package creation, and efficient follow-ups — expanding vertical reach</li>
+                    </ul>
+                </section>
+        
+                <!-- Slide 8: Competitive Landscape -->
+                <section>
+                    <h2>Competitive Landscape</h2>
+                    <div class="competitor-grid three-cards">
+                        <div class="competitor-card">
+                            <h3 class="competitor-name">Ada</h3>
+                            <p class="competitor-funding">$200M+</p>
+                            <p class="competitor-valuation">Valuation: $1.2B</p>
+                            <p class="competitor-differentiator">Open source + rapid deployment</p>
+                        </div>
+                        <div class="competitor-card">
+                            <h3 class="competitor-name">Intercom</h3>
+                            <p class="competitor-funding">$240M+</p>
+                            <p class="competitor-valuation">Valuation: $1.3B</p>
+                            <p class="competitor-differentiator">Vertical specialization + hosting</p>
+                        </div>
+                        <div class="competitor-card">
+                            <h3 class="competitor-name">Zendesk</h3>
+                            <p class="competitor-funding">$85.5M</p>
+                            <p class="competitor-valuation">Valuation: $10B+ (public)</p>
+                            <p class="competitor-differentiator">Integrated enterprise AI platform</p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Slide 9: Valuation & Fundraise -->
+                <section>
+                    <h2>Valuation & Fundraise</h2>
+                    <ul>
+                        <li>Our ISaaS positioning supports $7M-$9M+ valuation supported by market, product uniqueness, and compliance features</li>
+                        <li>MVP and pilot validations reduce risk; clear roadmap</li>
+                        <li>Raising $0.5M-$0.7M to accelerate sales, marketing, and customer success</li>
+                    </ul>
+                </section>
+        
+                <!-- Slide 10: Financial Projections & Metrics -->
+                <section>
+                    <h2>Financial Projections & Metrics</h2>
+                    <div class="metric-grid four-cards">
+                        <div class="metric-card">
+                            <div class="metric-number">5</div>
+                            <div class="metric-label">Starting Customers (Month 1)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">12%</div>
+                            <div class="metric-label">Monthly Growth (Compounded)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">$200</div>
+                            <div class="metric-label">ARPC (Monthly)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">8.4</div>
+                            <div class="metric-label">LTV/CAC (Strong unit economics)</div>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Slide 11: Team -->
+                <section>
+                    <h2>Team</h2>
+                    <div class="team-grid four-cards">
+                        <div class="team-card">
+                            <h3 class="team-name">Gleb Ikonnikov</h3>
+                            <p class="team-role">CEO & CTO</p>
+                            <p class="team-bio">Expert in high-load scalable backend systems for cloud providers</p>
+                            <a href="#" style="color: #06b6d4; text-decoration: none;">LinkedIn</a>
+                        </div>
+                        <div class="team-card">
+                            <h3 class="team-name">Alisa Miroshnichenko</h3>
+                            <p class="team-role">Product designer and CPO</p>
+                            <p class="team-bio">Product designer and CPO</p>
+                            <a href="https://www.linkedin.com/in/alisa-miroshnichenko-a34269203/" style="color: #06b6d4; text-decoration: none;">LinkedIn</a>
+                        </div>
+                        <div class="team-card">
+                            <h3 class="team-name">Pavel Sukmanov</h3>
+                            <p class="team-role">Sales Manager</p>
+                            <p class="team-bio">For onboarding non-technical business owners</p>
+                            <a href="https://www.linkedin.com/in/pavel-sukmanov-90b2932a8/" style="color: #06b6d4; text-decoration: none;">LinkedIn</a>
+                        </div>
+                        <div class="team-card">
+                            <h3 class="team-name">Eugene Anisei</h3>
+                            <p class="team-role">Startup Advisor</p>
+                            <p class="team-bio">Strategic advisor for startup growth and development</p>
+                            <a href="https://www.linkedin.com/in/eugen-anisei/" style="color: #06b6d4; text-decoration: none;">LinkedIn</a>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Slide 12: Thank You -->
+                <section data-background="#0f172a">
+                    <h1>Thank You</h1>
+                    <h2>AI Employee Online</h2>
+                    <h3>The Infrastructure Powering Future-Ready AI Business Automation</h3>
+                </section>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
