@@ -47,16 +47,13 @@
         });
     </script>
     
-    <!-- Vanta.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/night.css" id="theme">
     
     <!-- Reveal.js JavaScript -->
-    <script src=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
     
     
     <script>
@@ -884,23 +881,48 @@
             line-height: 1.4;
         }
         
+        /* AI 2025 Style Animated Gradient */
+        .ai-gradient {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            background-size: 400% 400%;
+            animation: aiGradientShift 8s ease infinite;
+        }
+        
+        @keyframes aiGradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Glowing effect for AI style */
+        .ai-glow {
+            box-shadow: 
+                0 0 20px rgba(83, 52, 131, 0.3),
+                0 0 40px rgba(15, 52, 96, 0.2),
+                0 0 60px rgba(22, 33, 62, 0.1);
+        }
+        
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-inter overflow-x-hidden">
     <!-- Regular Content -->
     <div class="regular-content">
-    <!-- Animated Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-cyan-600/10 to-teal-500/10 rounded-full blur-3xl floating-element"></div>
-        <div class="absolute top-40 right-20 w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-teal-400/10 rounded-full blur-3xl floating-element"></div>
-        <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-full blur-3xl floating-element"></div>
-    </div>
 
 
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 pb-8">
-        <div id="vanta-bg" class="absolute inset-0"></div>
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 md:pt-20 pb-8 finisher-header ai-gradient ai-glow">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
             <!-- Main Heading -->
             <div class="mb-8">
@@ -1107,7 +1129,7 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-slate-800">Launch & Scale</h3>
                     <p class="text-slate-600 leading-relaxed">Your AI employee starts handling calls, chats, and emails immediately. Monitor performance and expand to more channels.</p>
-                    <div class="mt-4 text-sm font-semibold text-cyan-600">Outcome: 95% call capture rate</div>
+                    <div class="mt-4 text-sm font-semibold text-cyan-600">Outcome: Immediate customer engagement</div>
                 </div>
             </div>
         </div>
@@ -1249,23 +1271,8 @@
                             class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 focus:bg-white transition-all duration-300"
                         >
                             <option value="" disabled selected>Select an assistant role for the demo</option>
-                            <option value="dental">Dental Clinic Frontdesk</option>
-                            <option value="beauty" disabled>Beauty Salon Frontdesk (coming soon)</option>
-                            <option value="barbershop" disabled>Barbershop Frontdesk (coming soon)</option>
-                            <option value="restaurant" disabled>Restaurant Booking Assistant (coming soon)</option>
-                            <option value="fitness" disabled>Fitness/Yoga Studio Assistant (coming soon)</option>
-                            <option value="medical" disabled>Medical Clinic Receptionist (coming soon)</option>
-                            <option value="igaming" disabled>iGaming VIP Concierge (coming soon)</option>
-                            <option value="b2b" disabled>B2B Event Sales Manager (coming soon)</option>
-                            <option value="realestate" disabled>Real Estate Assistant (coming soon)</option>
-                            <option value="hr" disabled>HR Recruiter Assistant (coming soon)</option>
-                            <option value="delivery" disabled>Delivery Service Caller (coming soon)</option>
-                            <option value="auto" disabled>Auto Service Frontdesk (coming soon)</option>
-                            <option value="hotel" disabled>Hotel Reception Assistant (coming soon)</option>
-                            <option value="crypto" disabled>Crypto Exchange Support (coming soon)</option>
-                            <option value="dex" disabled>DEX Support (coming soon)</option>
-                            <option value="lending" disabled>Lending Support (coming soon)</option>
-                            <option value="neobank" disabled>Neo-bank Support (coming soon)</option>
+                            <option value="dental">Reception of dental clinic</option>
+                            <option value="sales">Salesman of AI Employee Online</option>
                         </select>
                         <div id="role-help" class="sr-only">Choose the type of AI assistant that best matches your business needs</div>
                     </div>
@@ -1531,39 +1538,12 @@
             });
         }
 
-        // Handle role selection for disabled options
+        // Handle role selection
         function handleRoleChange(select) {
             console.log('Role changed to:', select.value);
-            if (select.value && select.options[select.selectedIndex].disabled) {
-                showWaitlistModal(select.value);
-                select.value = ''; // Reset selection
-            }
+            // No need for waitlist modal since all options are now available
         }
 
-        // Show waitlist modal for coming soon options
-        function showWaitlistModal(role) {
-            const roleNames = {
-                'beauty': 'Beauty Salon Frontdesk',
-                'barbershop': 'Barbershop Frontdesk',
-                'restaurant': 'Restaurant Booking Assistant',
-                'fitness': 'Fitness/Yoga Studio Frontdesk',
-                'medical': 'Medical Clinic Receptionist',
-                'igaming': 'iGaming VIP Concierge',
-                'b2b': 'B2B Event Sales Manager',
-                'realestate': 'Real Estate Assistant',
-                'hr': 'HR Recruiter Assistant',
-                'delivery': 'Delivery Service Caller',
-                'auto': 'Auto Service Frontdesk',
-                'hotel': 'Hotel Reception Assistant',
-                'crypto': 'Crypto Exchange Support',
-                'dex': 'DEX Support',
-                'lending': 'Lending Support',
-                'neobank': 'Neo-bank Support'
-            };
-            
-            const roleName = roleNames[role] || 'This role';
-            alert(`${roleName} is coming soon! Join our waitlist to be notified when it's available.`);
-        }
 
         // Enhanced form submission with UTM data
         function submitDemo(event) {
@@ -1733,26 +1713,6 @@
             });
         }
 
-        // Initialize Vanta Net background
-        function initVantaNet() {
-            if (window.VANTA && window.VANTA.NET) {
-                window.VANTA.NET({
-                    el: "#vanta-bg",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0x3fffff,
-                    backgroundColor: 0x153c27,
-                    points: 19.00,
-                    maxDistance: 40.00,
-                    spacing: 20.00
-                });
-            }
-        }
 
         // Check if pitch deck version should be shown
         function isPitchDeckMode() {
@@ -1823,7 +1783,6 @@
             detectAndUpdateVariant();
             captureUTMParameters();
             trackPageView('landing_page');
-            initVantaNet();
             initPhoneInput();
             initHeroAnimation();
             
@@ -1907,7 +1866,7 @@
                 'for Every Task'
             ];
             
-            let currentIndex = 0;
+            let currentIndex = 1; // Start with second phrase
             
             function animateText() {
                 if (!animationActive) return;
@@ -2287,9 +2246,10 @@
                 <section>
                     <h2>Valuation & Fundraise</h2>
                     <ul>
-                        <li>Our ISaaS positioning supports $7M-$9M+ valuation supported by market, product uniqueness, and compliance features</li>
+                        <li>Median AI startup pre-seed valuation: $3.6M-$5M globally</li>
+                        <li>Our ISaaS positioning supports $10M-$20M+ valuation supported by market, product uniqueness, and compliance features</li>
                         <li>MVP and pilot validations reduce risk; clear roadmap</li>
-                        <li>Raising $0.5M-$0.7M to accelerate sales, marketing, and customer success</li>
+                        <li>Raising $1M-$1.2M to accelerate sales, marketing, and customer success</li>
                     </ul>
                 </section>
         
@@ -2306,7 +2266,7 @@
                             <div class="metric-label">Monthly Growth (Compounded)</div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-number">$200</div>
+                            <div class="metric-number">$1,000</div>
                             <div class="metric-label">ARPC (Monthly)</div>
                         </div>
                         <div class="metric-card">
@@ -2352,10 +2312,56 @@
                     <h1>Thank You</h1>
                     <h2>AI Employee Online</h2>
                     <h3>The Infrastructure Powering Future-Ready AI Business Automation</h3>
+                    <div class="cta-buttons">
+                        <a href="mailto:hello@aiemployee.online" class="cta-button">Schedule Demo</a>
+                        <a href="#demo" class="cta-button secondary">Try Now</a>
+                    </div>
                 </section>
             </div>
         </div>
     </div>
+    
+    <!-- Finisher Header Script -->
+    <script src="https://cdn.jsdelivr.net/gh/finisher-labs/finisher-header@latest/dist/finisher-header.es5.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        new FinisherHeader({
+            "count": 12,
+            "size": {
+                "min": 1300,
+                "max": 1500,
+                "pulse": 0
+            },
+            "speed": {
+                "x": {
+                    "min": 0.6,
+                    "max": 3
+                },
+                "y": {
+                    "min": 0.6,
+                    "max": 3
+                }
+            },
+            "colors": {
+                "background": "#000000",
+                "particles": [
+                    "#000000",
+                    "#2a6f3b",
+                    "#000000",
+                    "#283871"
+                ]
+            },
+            "blending": "overlay",
+            "opacity": {
+                "center": 0.6,
+                "edge": 0
+            },
+            "skew": -0.2,
+            "shapes": [
+                "c"
+            ]
+        });
+    </script>
 </body>
 </html>
 
