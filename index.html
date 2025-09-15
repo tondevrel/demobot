@@ -2216,7 +2216,7 @@
             function validateForm() {
                 const name = nameInput.value.trim();
                 const email = emailInput.value.trim();
-                const phone = phoneInput.value.replace(/\D/g, '');
+                const phone = phoneInput.value;
                 const scenario = scenarioSelect.value;
                 
                 // Basic email validation
@@ -2258,7 +2258,7 @@
                 const formData = {
                     name: nameInput.value,
                     email: emailInput.value,
-                    phone: phoneInput.value,
+                    phone: .value,
                     role: scenarioSelect.value
                 };
 
