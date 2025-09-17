@@ -1,4 +1,4 @@
-// Universal phone number formatting function
+s// Universal phone number formatting function
 function formatPhoneNumber(input) {
     let value = input.value;
     
