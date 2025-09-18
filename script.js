@@ -422,7 +422,7 @@ Click OK to open the submission URL in a new tab, or Cancel to try again.
             const formData = {
                 name: nameInput.value,
                 email: emailInput.value,
-                phone: "+" + phoneInput.value,
+                phone: phoneInput.value,
                 role: scenarioSelect.value
             };
             
@@ -438,7 +438,7 @@ Click OK to open the submission URL in a new tab, or Cancel to try again.
             const formData = {
                 name: nameInputPC.value,
                 email: emailInputPC.value,
-                phone: "+" + phoneInputPC.value,
+                phone: phoneInputPC.value,
                 role: scenarioSelectPC.value
             };
             
