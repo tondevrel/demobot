@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.disabled = true;
 
         // Send to Google Apps Script
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyRiaViPF630YHlax9dLn-LOWh6x9ScAtiE2dSUm-1fBFx9m64jJN0ok-9PvxdHZ3P4Ag/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbziExvHKJUJNLljlle1TSU3a5FumS0MCkOtxOs_WzWaUtUlmwXJ2aGSr8ercvk1Op5E4g/exec';
         
         console.log('Form data:', formData);
         console.log('Script URL:', scriptURL);
